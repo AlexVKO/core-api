@@ -8,16 +8,15 @@ Rails.application.configure do
   config.active_storage.service = :amazon
   config.log_level = :debug
   config.log_tags = [:request_id]
-  config.action_mailer.default_url_options = { host: ENV['URL_HOST'] }
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    authentication: :plain,
-    address: ENV['MAILGUN_SMTP_SERVER'],
-    port: ENV['MAILGUN_SMTP_PORT'],
-    domain: ENV['MAILGUN_DOMAIN'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD']
+    authentication: :cram_md5,
+    user_name: ENV['MAILTRAP_USERNAME'],
+    password: ENV['MAILTRAP_PASSWORD'],
+    address: ENV['MAILTRAP_ADDRESS'],
+    domain: ENV['MAILTRAP_DOMAIN'],
+    port: ENV['MAILTRAP_PORT']
   }
 
   config.i18n.fallbacks = true

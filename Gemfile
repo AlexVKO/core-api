@@ -56,3 +56,5 @@ end
 group :production do
   gem 'sentry-ruby'
 end
+
+gem 'noticed', '~> 1.3'
